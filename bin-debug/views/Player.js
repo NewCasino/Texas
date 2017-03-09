@@ -6,24 +6,21 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var MainView = (function (_super) {
-    __extends(MainView, _super);
-    function MainView() {
+var Player = (function (_super) {
+    __extends(Player, _super);
+    function Player() {
         var _this = _super.call(this) || this;
         _this.addEventListener(eui.UIEvent.CREATION_COMPLETE, _this.onCreated, _this);
-        _this.skinName = "resource/eui_skins/custom/MainViewSkin.exml";
+        _this.skinName = "resource/eui_skins/custom/PlayerSkin.exml";
         return _this;
     }
-    MainView.prototype.onCreated = function (evt) {
+    Player.prototype.setPlayerData = function (playerData) {
+        this["lab_name"].text = playerData.name;
+        this["lab_balance"].text = playerData.balance;
+    };
+    Player.prototype.onCreated = function (evt) {
         console.log("on created complete");
-        this.addChild(new Player());
     };
-    MainView.getInstance = function () {
-        if (MainView._instance === undefined) {
-            MainView._instance = new MainView();
-        }
-        return MainView._instance;
-    };
-    return MainView;
+    return Player;
 }(eui.Component));
-__reflect(MainView.prototype, "MainView");
+__reflect(Player.prototype, "Player");

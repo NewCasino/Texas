@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="MainViewSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui">
-	<e:Image source="desk-1_png" id="desk" x="-650"/>
-	<e:Image source="chip-1_png" x="238" y="94"/>
+<e:Skin class="MainViewSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:ns1="*" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="desk-1_png" x="-650"/>
 </e:Skin>

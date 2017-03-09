@@ -129,6 +129,7 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected startCreateScene(): void {
+        //this.addChild(new MainView())
         this.addChild(MainView.getInstance())
     }
 }

@@ -134,6 +134,7 @@ var Main = (function (_super) {
      * Create scene interface
      */
     Main.prototype.startCreateScene = function () {
+        //this.addChild(new MainView())
         this.addChild(MainView.getInstance());
     };
     return Main;

@@ -52,3 +52,5 @@ declare module skins{
 }
 declare class MainViewSkin extends eui.Skin{
 }
+declare class PlayerSkin extends eui.Skin{
+}

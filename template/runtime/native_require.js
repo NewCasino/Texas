@@ -13,6 +13,7 @@ var game_file_list = [
 	"bin-debug/Main.js",
 	"bin-debug/ThemeAdapter.js",
 	"bin-debug/views/MainView.js",
+	"bin-debug/views/Player.js",
 	//----auto game_file_list end----
 ];
 

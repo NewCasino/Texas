@@ -1,27 +1,13 @@
 class MainView extends eui.Component{
 	public constructor() {
 		super();
-		this.addEventListener(eui.UIEvent.COMPLETE,this.onSkinLoaded,this);
-		this.addEventListener(egret.Event.COMPLETE, this.onComplete, this);
+		this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.onCreated, this);
 		this.skinName = "resource/eui_skins/custom/MainViewSkin.exml";
 	}
 
-	private onComplete(evt:egret.Event){
-		console.log("onComplete.")
-	}
-	
-	private onSkinLoaded(evt:eui.UIEvent){
-		console.log("Skin is loaded.");
-	}
-
-	public partAdded(partName:string, instance:any){
-		super.partAdded(partName, instance);
-		console.log(partName);
-	}
-
-	public childrenCreated(){
-		super.childrenCreated();
-		console.log("childrenCreated")
+	private onCreated(evt:eui.UIEvent){
+		console.log("on created complete");
+		this.addChild(new Player());
 	}
 
 	private static _instance:MainView;
