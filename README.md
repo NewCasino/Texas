@@ -10,6 +10,7 @@ No Comment, this project supposed to be make a Texas Holdem Game HTML5 game, but
 * Backend:Golang or NodeJS, websocket is confirmed
 * Database:Mongo decided, how is MySQL
 * Something i forgot 
+* token and session
 
 ## Looks Sucks Now
 
