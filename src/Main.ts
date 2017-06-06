@@ -44,6 +44,8 @@ class Main extends eui.UILayer {
         //设置加载进度界面
         this.loadingView = new LoadingUI();
         this.stage.addChild(this.loadingView);
+        this.loadingView.x = this.stage.stageWidth - this.loadingView.width >> 1;
+        this.loadingView.y = this.stage.stageHeight - this.loadingView.height >> 1;
         // initialize the Resource loading library
         //初始化Resource资源加载库
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);

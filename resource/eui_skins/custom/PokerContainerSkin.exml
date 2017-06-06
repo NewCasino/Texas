@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="PokerContainerSkin" width="385" height="117" xmlns:e="http://ns.egret.com/eui">
+	<e:Image source="101_png" x="13" y="12"/>
+	<e:Image source="101_png" x="87" y="12"/>
+	<e:Image source="101_png" x="160" y="12"/>
+	<e:Image source="101_png" x="234" y="12"/>
+	<e:Image source="101_png" x="307" y="12"/>
+
+</e:Skin>

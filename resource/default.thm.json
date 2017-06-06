@@ -29,7 +29,9 @@
     "resource/eui_skins/ToggleSwitchSkin.exml",
     "resource/eui_skins/VScrollBarSkin.exml",
     "resource/eui_skins/VSliderSkin.exml",
+    "resource/eui_skins/custom/CardsSkin.exml",
     "resource/eui_skins/custom/MainViewSkin.exml",
-    "resource/eui_skins/custom/PlayerSkin.exml"
+    "resource/eui_skins/custom/PlayerSkin.exml",
+    "resource/eui_skins/custom/PokerContainerSkin.exml"
   ]
 }

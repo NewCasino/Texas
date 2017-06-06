@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="MainViewSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:ns1="*" xmlns:w="http://ns.egret.com/wing">
-	<e:Image source="desk-1_png" x="-650"/>
+<e:Skin class="MainViewSkin" width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:ns1="*" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="desk-1_png" x="-401.5" y="-103"/>
+	<ns1:Player id="player0" width="105" height="122" x="433" y="401"/>
+	<ns1:Player id="player2" width="105" height="122" x="6" y="235"/>
+	<ns1:Player id="player3" width="105" height="122" x="193" y="54"/>
+	<ns1:Player id="player4" width="105" height="122" x="762" y="51"/>
+	<ns1:Player id="player5" width="105" height="122" x="896" y="225"/>
+	<ns1:Cards id="cards0" width="114" height="135" x="536" y="400.5"/>
+	<ns1:Player id="player6" width="105" height="122" x="730" y="409"/>
+	<ns1:Cards id="cards6" width="114" height="135" x="832" y="408.5"/>
+	<ns1:Player id="player1" width="105" height="122" x="143" y="425"/>
+	<ns1:Cards id="cards1" width="114" height="135" x="246" y="426.5"/>
+	<ns1:Cards id="cards4" width="114" height="135" x="865" y="52"/>
+	<ns1:Cards id="cards2" width="114" height="135" x="108" y="236"/>
+	<ns1:Cards id="cards3" width="114" height="135" x="295" y="54"/>
+	<ns1:Cards id="cards5" width="114" height="135" x="998" y="225"/>
+	<ns1:PokerContainer id="public_cards" x="356" y="237" width="385" height="117"/>
 </e:Skin>

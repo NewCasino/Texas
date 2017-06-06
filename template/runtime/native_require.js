@@ -12,8 +12,10 @@ var game_file_list = [
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
 	"bin-debug/ThemeAdapter.js",
+	"bin-debug/views/Cards.js",
 	"bin-debug/views/MainView.js",
 	"bin-debug/views/Player.js",
+	"bin-debug/views/PokerContainer.js",
 	//----auto game_file_list end----
 ];
 
@@ -49,8 +51,8 @@ egret_native.egretStart = function () {
 		entryClassName: "Main",
 		frameRate: 30,
 		scaleMode: "showAll",
-		contentWidth: 640,
-		contentHeight: 1136,
+		contentWidth: 1136,
+		contentHeight: 640,
 		showPaintRect: false,
 		showFPS: true,
 		fpsStyles: "x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9",

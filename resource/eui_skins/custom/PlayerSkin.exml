@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="PlayerSkin" width="284" height="300" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image id="img_head" source="head1_png" x="15" y="4"/>
-	<e:Image id="img_card0" source="101_png" x="0" y="119"/>
-	<e:Image id="img_card1" source="101_png" x="80" y="119"/>
-	<e:Label id="lab_name" text="Label" x="119" y="14" anchorOffsetX="0" width="170"/>
-	<e:Label id="lab_balance" text="Label" x="120" y="58" anchorOffsetX="0" width="145"/>
+<e:Skin class="PlayerSkin" width="107" height="122" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="img_head" source="head1_png"  x="16" y="24"/>
+	<e:Label id="lab_status" text="等待中" anchorOffsetX="0" width="100" textAlign="center" size="24"/>
+	<e:Label id="lab_balance" text="10,000" x="0.01" y="90.93" anchorOffsetX="0" width="100" textAlign="center" size="24" rotation="0.03"/>
 </e:Skin>

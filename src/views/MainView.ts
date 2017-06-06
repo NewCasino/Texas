@@ -6,8 +6,7 @@ class MainView extends eui.Component{
 	}
 
 	private onCreated(evt:eui.UIEvent){
-		console.log("on created complete");
-		this.addChild(new Player());
+		console.log("MainView on created complete");
 	}
 
 	private static _instance:MainView;
