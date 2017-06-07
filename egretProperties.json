@@ -24,6 +24,10 @@
 		{
 			"name": "tween",
 			"path": "${EGRET_APP_DATA}/4.0.3"
+		},
+		{
+			"name":"socket",
+			"path":"${EGRET_APP_DATA}/4.0.3"
 		}
 	]
 }
