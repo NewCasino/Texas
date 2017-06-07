@@ -1,3 +1,6 @@
+/**
+ * Player's Card holder
+ */
 class Cards extends eui.Component{
 	public constructor() {
 		super();

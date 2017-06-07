@@ -1,3 +1,6 @@
+/**
+ * Player Display on Table
+ */
 class Player extends eui.Component{
 	public constructor() {
 		super();

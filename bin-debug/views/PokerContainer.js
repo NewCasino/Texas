@@ -7,7 +7,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 /**
- * Two poker hoder for player on desk
+ * public cards holder on desk
  */
 var PokerContainer = (function (_super) {
     __extends(PokerContainer, _super);

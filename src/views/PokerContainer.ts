@@ -1,5 +1,5 @@
 /**
- * Two poker hoder for player on desk
+ * public cards holder on desk
  */
 class PokerContainer extends eui.Component{
 	public constructor() {
