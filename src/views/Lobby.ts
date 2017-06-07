@@ -6,6 +6,8 @@ class Lobby extends eui.Component{
 	}
 	private inited = false;
 	private dataFlag = false;
+	private updateFlag = false;
+
 	private onCreated(evt:eui.UIEvent){
 		this.inited = true;
 		if( this.dataFlag){
@@ -34,6 +36,9 @@ class Lobby extends eui.Component{
 		
 	}
 
+	public checkUpdate(){
+		
+	}
 	private static _instance:Lobby;
 	public static getInstance():Lobby{
 		if( Lobby._instance === undefined){

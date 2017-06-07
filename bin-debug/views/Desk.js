@@ -14,13 +14,25 @@ var Desk = (function (_super) {
         _this.initFlag = false;
         _this.dataFlag = false;
         _this.addEventListener(eui.UIEvent.CREATION_COMPLETE, _this.onCreated, _this);
+        _this.addEventListener(egret.Event.REMOVED_FROM_STAGE, _this.onRemoved, _this);
         _this.skinName = "resource/eui_skins/custom/DeskSkin.exml";
         return _this;
     }
+    Desk.prototype.onRemoved = function (evt) {
+        for (var i = 0; i <= 6; i++) {
+            this["cards" + i].visible = false;
+            this["player" + i].visible = false;
+        }
+    };
+    Desk.prototype.onExit = function (evt) {
+        GameMgr.getInstance().send({ p: Proto.PROTO_LEAVE });
+    };
     Desk.prototype.onCreated = function (evt) {
+        this["btn_exit"].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onExit, this);
         for (var i = 0; i <= 6; i++) {
             var player = this["player" + i];
             player.setCardPlay(this["cards" + i]);
+            this["cards" + i].visible = false;
             player.visible = false;
             this.playersDisplay[i] = player;
         }
@@ -34,17 +46,16 @@ var Desk = (function (_super) {
         this.dataFlag = false;
         var len = this.players.length;
         for (var i = 0; i < len; i++) {
-            var player = GameMgr.getInstance().getPlayerData(this.players[i]);
-            if (player) {
-                var pos = player.pos;
-                var playerDisplay = this.playersDisplay[pos];
-                playerDisplay.setPlayerData(player);
-            }
+            var player = this.players[i]; //GameMgr.getInstance().getPlayerData(this.players[i]);
+            var pos = player.pos;
+            var playerDisplay = this.playersDisplay[pos];
+            playerDisplay.setPlayerData(player);
+            playerDisplay.visible = true;
         }
     };
-    Desk.prototype.setData = function (table, playerIds) {
+    Desk.prototype.setData = function (table, players) {
         this.table = table;
-        this.players = playerIds;
+        this.players = players;
         if (this.initFlag) {
             this.applyData();
         }

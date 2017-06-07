@@ -6,7 +6,7 @@ class Player extends eui.Component{
 	}
 
 	public setPlayerData(playerData:PlayerData){
-		this["lab_name"].text = playerData.name;
+		this["lab_status"].text = "等待中";
 		this["lab_balance"].text = playerData.money;
 	}
 	

@@ -13,9 +13,9 @@ var DeskData = (function (_super) {
     }
     DeskData.prototype.fromData = function (data) {
         this.id = data.id;
-        this.curNum = data.num;
         this.max = data.max;
         this.curTurn = data.turn;
+        this.curNum = data.num;
     };
     DeskData.prototype.join = function (player) {
     };

@@ -16,4 +16,5 @@
 	<ns1:Cards id="cards3" width="114" height="135" x="295" y="54"/>
 	<ns1:Cards id="cards5" width="114" height="135" x="998" y="225"/>
 	<ns1:PokerContainer id="public_cards" x="356" y="237" width="385" height="117"/>
+	<e:Button id="btn_exit" label="Exit" x="1011" y="576"/>
 </e:Skin>

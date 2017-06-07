@@ -9,13 +9,16 @@ var __extends = (this && this.__extends) || function (d, b) {
 var PlayerData = (function (_super) {
     __extends(PlayerData, _super);
     function PlayerData() {
-        return _super.call(this) || this;
+        var _this = _super.call(this) || this;
+        _this.table = -1;
+        return _this;
     }
     PlayerData.prototype.fromData = function (data) {
         this.id = data.id;
         this.name = data.name;
         this.money = data.money;
         this.pos = data.pos;
+        this.table = data.table;
         this.status = data.status;
     };
     PlayerData.recycle = function (data) {

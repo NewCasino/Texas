@@ -12,6 +12,7 @@ var Lobby = (function (_super) {
         var _this = _super.call(this) || this;
         _this.inited = false;
         _this.dataFlag = false;
+        _this.updateFlag = false;
         _this.addEventListener(eui.UIEvent.CREATION_COMPLETE, _this.onCreated, _this);
         _this.skinName = "resource/eui_skins/custom/LobbySkin.exml";
         return _this;
@@ -40,6 +41,8 @@ var Lobby = (function (_super) {
             deskTile.setData(this.tables[i]);
             this["desk_con"].addChild(deskTile);
         }
+    };
+    Lobby.prototype.checkUpdate = function () {
     };
     Lobby.getInstance = function () {
         if (Lobby._instance === undefined) {

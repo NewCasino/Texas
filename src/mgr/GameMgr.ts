@@ -55,6 +55,7 @@ class GameMgr extends egret.HashObject{
 			table.fromData(data.r.t);
 			let players = data.r.p;
 			len = players.length;
+			let p = [];
 			for( let i =0; i < len; i++){
 				let player:PlayerData;
 				if( this.players[players[i]]){
@@ -64,8 +65,14 @@ class GameMgr extends egret.HashObject{
 					this.players[players[i].id] = player;
 				}
 				player.fromData(players[i]);
+				p.push(player);
 			}
-			Desk.getInstance().setData(table, data.r.p);
+			Desk.getInstance().setData(table, p);
+			break;
+			case Proto.PROTO_LEAVE:
+			this.me.fromData(data.r);
+			GameVars.Root.removeChild(Desk.getInstance());
+			GameVars.Root.addChild(Lobby.getInstance());
 			break;
 		}
 	}

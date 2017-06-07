@@ -60,6 +60,7 @@ var GameMgr = (function (_super) {
                 table.fromData(data.r.t);
                 var players = data.r.p;
                 len = players.length;
+                var p = [];
                 for (var i = 0; i < len; i++) {
                     var player = void 0;
                     if (this.players[players[i]]) {
@@ -70,8 +71,14 @@ var GameMgr = (function (_super) {
                         this.players[players[i].id] = player;
                     }
                     player.fromData(players[i]);
+                    p.push(player);
                 }
-                Desk.getInstance().setData(table, data.r.p);
+                Desk.getInstance().setData(table, p);
+                break;
+            case Proto.PROTO_LEAVE:
+                this.me.fromData(data.r);
+                GameVars.Root.removeChild(Desk.getInstance());
+                GameVars.Root.addChild(Lobby.getInstance());
                 break;
         }
     };

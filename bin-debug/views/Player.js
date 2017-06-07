@@ -15,7 +15,7 @@ var Player = (function (_super) {
         return _this;
     }
     Player.prototype.setPlayerData = function (playerData) {
-        this["lab_name"].text = playerData.name;
+        this["lab_status"].text = "等待中";
         this["lab_balance"].text = playerData.money;
     };
     Player.prototype.setCardPlay = function (card) {

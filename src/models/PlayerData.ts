@@ -10,11 +10,13 @@ class PlayerData extends egret.HashObject{
 	public totalTimes:number;
 	public status:number;
 	public pos:number;
+	public table:number = -1;
 	public fromData(data){
 		this.id = data.id;
 		this.name = data.name;
 		this.money = data.money;
 		this.pos = data.pos;
+		this.table = data.table;
 		this.status = data.status;
 	}
 
