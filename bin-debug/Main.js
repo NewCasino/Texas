@@ -141,6 +141,7 @@ var Main = (function (_super) {
      * Create scene interface
      */
     Main.prototype.startCreateScene = function () {
+        GameMgr.getInstance().start();
         this.addChild(Lobby.getInstance());
     };
     return Main;

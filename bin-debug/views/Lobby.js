@@ -10,12 +10,36 @@ var Lobby = (function (_super) {
     __extends(Lobby, _super);
     function Lobby() {
         var _this = _super.call(this) || this;
+        _this.inited = false;
+        _this.dataFlag = false;
         _this.addEventListener(eui.UIEvent.CREATION_COMPLETE, _this.onCreated, _this);
         _this.skinName = "resource/eui_skins/custom/LobbySkin.exml";
         return _this;
     }
     Lobby.prototype.onCreated = function (evt) {
+        this.inited = true;
+        if (this.dataFlag) {
+            this.appleTables();
+        }
         console.log("Lobby on created complete");
+    };
+    Lobby.prototype.setup = function (tables) {
+        this.tables = tables;
+        if (this.inited) {
+            this.appleTables();
+        }
+        else {
+            this.dataFlag = true;
+        }
+    };
+    Lobby.prototype.appleTables = function () {
+        this.dataFlag = false;
+        var len = this.tables.length;
+        for (var i = 0; i < len; i++) {
+            var deskTile = DeskTile.gain();
+            deskTile.setData(this.tables[i]);
+            this["desk_con"].addChild(deskTile);
+        }
     };
     Lobby.getInstance = function () {
         if (Lobby._instance === undefined) {

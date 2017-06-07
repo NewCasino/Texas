@@ -136,6 +136,7 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected startCreateScene(): void {
+        GameMgr.getInstance().start();
         this.addChild(Lobby.getInstance());
     }
 }

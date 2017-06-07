@@ -16,7 +16,10 @@ var Player = (function (_super) {
     }
     Player.prototype.setPlayerData = function (playerData) {
         this["lab_name"].text = playerData.name;
-        this["lab_balance"].text = playerData.balance;
+        this["lab_balance"].text = playerData.money;
+    };
+    Player.prototype.setCardPlay = function (card) {
+        this.cardDisplay = card;
     };
     Player.prototype.onCreated = function (evt) {
         console.log("on created complete");

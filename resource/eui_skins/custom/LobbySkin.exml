@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="LobbySkin" width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:ns1="*" xmlns:w="http://ns.egret.com/wing">
-	<ns1:DeskTile id="test" width="20" height="20" x="144" y="188"/>
+	<e:Group id="desk_con" width="1069" height="513" x="30" y="88" anchorOffsetX="0" anchorOffsetY="0">
+		<e:layout>
+			<e:TileLayout rowHeight="125" columnWidth="210" horizontalGap="10" verticalGap="10"/>
+		</e:layout>
+	</e:Group>
 </e:Skin>

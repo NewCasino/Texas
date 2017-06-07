@@ -1,3 +1,6 @@
+/**
+ * Two poker hoder for player on desk
+ */
 class PokerContainer extends eui.Component{
 	public constructor() {
 		super();

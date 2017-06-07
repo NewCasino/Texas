@@ -5,9 +5,14 @@ class Player extends eui.Component{
 		this.skinName = "resource/eui_skins/custom/PlayerSkin.exml";
 	}
 
-	public setPlayerData(playerData){
+	public setPlayerData(playerData:PlayerData){
 		this["lab_name"].text = playerData.name;
-		this["lab_balance"].text = playerData.balance;
+		this["lab_balance"].text = playerData.money;
+	}
+	
+	private cardDisplay:Cards;
+	public setCardPlay(card:Cards){
+		this.cardDisplay = card;
 	}
 
 	private onCreated(evt:eui.UIEvent){
