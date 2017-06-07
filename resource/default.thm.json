@@ -30,7 +30,9 @@
     "resource/eui_skins/VScrollBarSkin.exml",
     "resource/eui_skins/VSliderSkin.exml",
     "resource/eui_skins/custom/CardsSkin.exml",
-    "resource/eui_skins/custom/MainViewSkin.exml",
+    "resource/eui_skins/custom/DeskSkin.exml",
+    "resource/eui_skins/custom/DeskTileSkin.exml",
+    "resource/eui_skins/custom/LobbySkin.exml",
     "resource/eui_skins/custom/PlayerSkin.exml",
     "resource/eui_skins/custom/PokerContainerSkin.exml"
   ]

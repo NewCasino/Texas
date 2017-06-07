@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="DeskTileSkin" width="209" height="123" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Label id="lab" text="人数：0/6" x="39" y="18"/>
+	<e:Button id="btn_join" label="Join" x="56" y="67"/>
+</e:Skin>

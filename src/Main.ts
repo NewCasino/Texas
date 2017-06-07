@@ -50,6 +50,12 @@ class Main extends eui.UILayer {
         //初始化Resource资源加载库
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.loadConfig("resource/default.res.json", "resource/");
+
+        GameVars.Root = this;
+        GameVars.Stage = this.stage;
+        GameVars.Global_Width = this.stage.stageWidth;
+        GameVars.Global_Height = this.stage.stageHeight;
+        egret.log(GameVars.Version);
     }
     /**
      * 配置文件加载完成,开始预加载皮肤主题资源和preload资源组。
@@ -125,13 +131,11 @@ class Main extends eui.UILayer {
             this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal);
         }
     }
-    private textfield:egret.TextField;
     /**
      * 创建场景界面
      * Create scene interface
      */
     protected startCreateScene(): void {
-        //this.addChild(new MainView())
-        this.addChild(MainView.getInstance())
+        this.addChild(Lobby.getInstance());
     }
 }

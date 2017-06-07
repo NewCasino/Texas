@@ -59,6 +59,11 @@ var Main = (function (_super) {
         //初始化Resource资源加载库
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.loadConfig("resource/default.res.json", "resource/");
+        GameVars.Root = this;
+        GameVars.Stage = this.stage;
+        GameVars.Global_Width = this.stage.stageWidth;
+        GameVars.Global_Height = this.stage.stageHeight;
+        egret.log(GameVars.Version);
     };
     /**
      * 配置文件加载完成,开始预加载皮肤主题资源和preload资源组。
@@ -136,8 +141,7 @@ var Main = (function (_super) {
      * Create scene interface
      */
     Main.prototype.startCreateScene = function () {
-        //this.addChild(new MainView())
-        this.addChild(MainView.getInstance());
+        this.addChild(Lobby.getInstance());
     };
     return Main;
 }(eui.UILayer));
