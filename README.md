@@ -1,6 +1,9 @@
 # Texas
 No Comment, this project supposed to be make a Texas Holdem Game with HTML5, but i don't know how is my patience
   
+## Preview
+[Preview](https://adobeattheworld.github.io/Texas/)
+  
 ## Develop Enviroment
 * [Egret v4.1.0](https://github.com/egret-labs/egret-core)
 * [Egret Wing 3.0](https://egret.com/products/wing.html)
