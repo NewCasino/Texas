@@ -1,5 +1,5 @@
 # Texas
-No Comment, this project supposed to be make a Texas Holdem Game HTML5 game, but i don't know how is my patience
+No Comment, this project supposed to be make a Texas Holdem Game with HTML5, but i don't know how is my patience
   
 ## Develop Enviroment
 * [Egret v4.1.0](https://github.com/egret-labs/egret-core)
