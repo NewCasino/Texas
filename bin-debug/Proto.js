@@ -15,4 +15,6 @@ Proto.PROTO_GIVEUP = 5;
 Proto.PROTO_CALL = 6;
 Proto.PROTO_RAISE = 7;
 Proto.PROTO_PLAYER = 8;
+Proto.PROTO_START = 9;
+Proto.PROTO_BET = 10;
 __reflect(Proto.prototype, "Proto");

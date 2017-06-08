@@ -8,4 +8,6 @@ class Proto {
 	public static PROTO_CALL = 6;
 	public static PROTO_RAISE = 7;
 	public static PROTO_PLAYER = 8;
+	public static PROTO_START = 9;
+	public static PROTO_BET = 10;
 }

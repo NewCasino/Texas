@@ -7,9 +7,16 @@ class LocalServer extends egret.HashObject{
 	private players = {};
 	private playerIds = [1];
 	private tableIds = [];
+	private timer:egret.Timer;
 	public constructor() {
 		super();
+		this.timer = new egret.Timer(1000);
+		this.timer.addEventListener(egret.TimerEvent.TIMER, this.onTimer, this);
 		this.initSomeFakeTableAndPlayer();
+	}
+
+	private onTimer(evt:egret.TimerEvent){
+		
 	}
 
 	public send(data){

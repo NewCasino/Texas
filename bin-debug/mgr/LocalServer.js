@@ -18,9 +18,13 @@ var LocalServer = (function (_super) {
         _this.players = {};
         _this.playerIds = [1];
         _this.tableIds = [];
+        _this.timer = new egret.Timer(1000);
+        _this.timer.addEventListener(egret.TimerEvent.TIMER, _this.onTimer, _this);
         _this.initSomeFakeTableAndPlayer();
         return _this;
     }
+    LocalServer.prototype.onTimer = function (evt) {
+    };
     LocalServer.prototype.send = function (data) {
         var proto = data.p;
         switch (proto) {
