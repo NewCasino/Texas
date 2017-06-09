@@ -18,12 +18,35 @@ var LocalServer = (function (_super) {
         _this.players = {};
         _this.playerIds = [1];
         _this.tableIds = [];
+        _this.table_cards = {};
+        _this.waitingQueue = [];
         _this.timer = new egret.Timer(1000);
         _this.timer.addEventListener(egret.TimerEvent.TIMER, _this.onTimer, _this);
         _this.initSomeFakeTableAndPlayer();
         return _this;
     }
     LocalServer.prototype.onTimer = function (evt) {
+        while (this.waitingQueue.length != 0) {
+            var tableId = this.waitingQueue.pop();
+            var table = this.tables[tableId];
+            if (table.turn == -1) {
+                table.turn = 0;
+                table.state = GameConsts.TABLE_BLIND_BET;
+            }
+            // this.table_cards[tableId] = Utils.shuffle(LocalServer.gainCards());
+            // spend the money of big blind and small blind
+            //big blind
+            var player = this.getPlayerByPos(tableId, table.turn);
+            player.money -= 200;
+            //remember notify the player
+            table.turn = table.turn++ % 7;
+            //small blind
+            player = this.getPlayerByPos(tableId, table.turn);
+            player.money -= 100;
+            //remember notify the player
+            table.turn = table.turn++ % 7;
+            GameMgr.getInstance().onData({ p: Proto.PROTO_START, pos: table.turn, s: table.state });
+        }
     };
     LocalServer.prototype.send = function (data) {
         var proto = data.p;
@@ -42,20 +65,24 @@ var LocalServer = (function (_super) {
                 GameMgr.getInstance().onData({ p: proto, r: tables });
                 break;
             case Proto.PROTO_JOIN:
-                var id = data.id;
-                if (this.tableIds.indexOf(id) == -1) {
+                var id_1 = data.id;
+                if (this.tableIds.indexOf(id_1) == -1) {
                     GameMgr.getInstance().onData({ p: proto, errId: 404, errMsg: "Table not exsit." });
                     return;
                 }
-                this.getPos(this.tables[id], this.players[1]);
-                this.tables[id].players.push(1);
-                this.players[1].table = id;
+                this.getPos(this.tables[id_1], this.players[1]);
+                this.tables[id_1].players.push(1);
+                this.players[1].table = id_1;
                 var players = [];
-                len = this.tables[id].players.length;
+                len = this.tables[id_1].players.length;
                 for (var i = 0; i < len; i++) {
-                    players.push(this.players[this.tables[id].players[i]]);
+                    players.push(this.players[this.tables[id_1].players[i]]);
                 }
-                GameMgr.getInstance().onData({ p: proto, r: { t: this.tables[id], p: players } });
+                GameMgr.getInstance().onData({ p: proto, r: { t: this.tables[id_1], p: players } });
+                //not start imediatly
+                setTimeout(function () {
+                    this.waitingQueue.push(id_1);
+                }, 1000);
                 break;
             case Proto.PROTO_LEAVE:
                 player = this.players[1];
@@ -96,7 +123,7 @@ var LocalServer = (function (_super) {
     LocalServer.prototype.initSomeFakeTableAndPlayer = function () {
         for (var i = 0; i < 10; i++) {
             var id = i + 1;
-            var table = { id: id, players: [], max: 7, turn: 0, pos: 0, num: 0 };
+            var table = { id: id, players: [], max: 7, turn: 0, pos: 0, num: 0, state: -1 };
             this.tableIds.push(id);
             this.tables[id] = table;
         }
@@ -125,6 +152,17 @@ var LocalServer = (function (_super) {
             }
         }
     };
+    LocalServer.prototype.getPlayerByPos = function (tableId, pos) {
+        var table = this.tables[tableId];
+        var len = table.players.length;
+        for (var i = 0; i < len; i++) {
+            var player = this.players[table.players[i]];
+            if (player != undefined && player.pos == pos) {
+                return player;
+            }
+        }
+        return null;
+    };
     LocalServer.prototype.getPos = function (table, player) {
         for (var i = 0; i <= 6; i++) {
             if (!(table.pos & (1 << i))) {
@@ -135,6 +173,23 @@ var LocalServer = (function (_super) {
             }
         }
     };
+    LocalServer.gainCards = function () {
+        if (LocalServer.cardspool.length != 0) {
+            return LocalServer.cardspool.pop();
+        }
+        var cards = [];
+        for (var i = 1; i <= 4; i++) {
+            for (var j = 1; j <= 13; j++) {
+                cards.push(i * 100 + j);
+            }
+        }
+        return cards;
+    };
+    LocalServer.recycleCards = function (cards) {
+        if (LocalServer.cardspool.indexOf(cards) == -1) {
+            LocalServer.cardspool.push(cards);
+        }
+    };
     LocalServer.getInstance = function () {
         if (LocalServer._instance === undefined) {
             LocalServer._instance = new LocalServer();
@@ -143,4 +198,5 @@ var LocalServer = (function (_super) {
     };
     return LocalServer;
 }(egret.HashObject));
+LocalServer.cardspool = [];
 __reflect(LocalServer.prototype, "LocalServer");

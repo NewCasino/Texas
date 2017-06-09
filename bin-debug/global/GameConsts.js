@@ -9,8 +9,6 @@ var GameConsts = (function () {
 GameConsts.STATE_FREE = 0;
 GameConsts.STATE_IN = 1;
 GameConsts.STATE_WATCH = 2;
-GameConsts.TABLE_JOIN = "join_table";
-GameConsts.TABLE_LEAVE = "leave_table";
-GameConsts.TABLE_START = "start_table";
-GameConsts.ROUND_END = "round_end";
+GameConsts.TABLE_READY = 0; //player not enough, ready phase
+GameConsts.TABLE_BLIND_BET = 1; //start and blind bet
 __reflect(GameConsts.prototype, "GameConsts");

@@ -7,6 +7,7 @@ class LocalServer extends egret.HashObject{
 	private players = {};
 	private playerIds = [1];
 	private tableIds = [];
+	private table_cards = {};
 	private timer:egret.Timer;
 	public constructor() {
 		super();
@@ -14,9 +15,30 @@ class LocalServer extends egret.HashObject{
 		this.timer.addEventListener(egret.TimerEvent.TIMER, this.onTimer, this);
 		this.initSomeFakeTableAndPlayer();
 	}
-
+	private waitingQueue = [];
 	private onTimer(evt:egret.TimerEvent){
-		
+		while( this.waitingQueue.length != 0 ){
+			let tableId = this.waitingQueue.pop();
+			let table = this.tables[tableId];
+			if( table.turn == -1){
+				table.turn = 0;
+				table.state = GameConsts.TABLE_BLIND_BET;
+			}
+			// this.table_cards[tableId] = Utils.shuffle(LocalServer.gainCards());
+			// spend the money of big blind and small blind
+			//big blind
+			let player = this.getPlayerByPos(tableId, table.turn);
+			player.money -= 200;
+			//remember notify the player
+			table.turn = table.turn++%7;
+			//small blind
+			player = this.getPlayerByPos(tableId, table.turn);
+			player.money -= 100;
+			//remember notify the player
+			table.turn = table.turn++%7;
+
+			GameMgr.getInstance().onData({p:Proto.PROTO_START,pos:table.turn,s:table.state});
+		}
 	}
 
 	public send(data){
@@ -51,6 +73,10 @@ class LocalServer extends egret.HashObject{
 				players.push(this.players[this.tables[id].players[i]]);
 			}
 			GameMgr.getInstance().onData({p:proto,r:{t:this.tables[id],p:players}});
+			//not start imediatly
+			setTimeout(function(){
+				this.waitingQueue.push(id);
+			},1000);
 			break
 			case Proto.PROTO_LEAVE:
 			player = this.players[1];
@@ -92,7 +118,7 @@ class LocalServer extends egret.HashObject{
 	private initSomeFakeTableAndPlayer(){
 		for( let i = 0; i < 10; i++){
 			let id = i+1;
-			let table = {id:id,players:[],max:7,turn:0,pos:0,num:0};
+			let table = {id:id,players:[],max:7,turn:0,pos:0,num:0,state:-1};
 			this.tableIds.push(id);
 			this.tables[id] = table;
 		}
@@ -125,6 +151,19 @@ class LocalServer extends egret.HashObject{
 		}
 	}
 
+
+	public getPlayerByPos(tableId, pos){
+		let table = this.tables[tableId];
+		let len = table.players.length;
+		for(let i = 0; i < len; i++){
+			let player = this.players[table.players[i]];
+			if(player != undefined && player.pos == pos){
+				return player;
+			}
+		}
+		return null;
+	}
+
 	private getPos(table,player){
 		for(let i = 0; i <= 6; i++){
 			if(!( table.pos & (1 << i))){
@@ -133,6 +172,25 @@ class LocalServer extends egret.HashObject{
 				egret.log("Generate Position:",table.id, table.pos);
 				break;
 			}
+		}
+	}
+
+	private static cardspool = [];
+	private static gainCards(){
+		if( LocalServer.cardspool.length != 0){
+			return LocalServer.cardspool.pop();
+		}
+		let cards = [];
+		for(let i=1; i<=4;i++){
+			for( let j = 1; j <= 13; j++){
+				cards.push(i*100+j);
+			}
+		}
+		return cards;
+	}
+	private static recycleCards(cards){
+		if( LocalServer.cardspool.indexOf(cards) == -1){
+			LocalServer.cardspool.push(cards);
 		}
 	}
 
