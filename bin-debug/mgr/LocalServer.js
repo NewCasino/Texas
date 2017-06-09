@@ -47,8 +47,8 @@ var LocalServer = (function (_super) {
                     GameMgr.getInstance().onData({ p: proto, errId: 404, errMsg: "Table not exsit." });
                     return;
                 }
-                this.tables[id].players.push(1);
                 this.getPos(this.tables[id], this.players[1]);
+                this.tables[id].players.push(1);
                 this.players[1].table = id;
                 var players = [];
                 len = this.tables[id].players.length;
@@ -126,7 +126,7 @@ var LocalServer = (function (_super) {
         }
     };
     LocalServer.prototype.getPos = function (table, player) {
-        for (var i = 0; i < 6; i++) {
+        for (var i = 0; i <= 6; i++) {
             if (!(table.pos & (1 << i))) {
                 player.pos = i;
                 table.pos = table.pos | (1 << i);

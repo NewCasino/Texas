@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="CardsSkin" width="107" height="126" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image id="card_0" source="101_png" rotation="-10" y="9"/>
-	<e:Image id="card_1" source="101_png" x="45" rotation="10" y="0"/>
+	<e:Image id="card_0" source="cards_json.101" rotation="-10" y="9"/>
+	<e:Image id="card_1" source="cards_json.101" x="45" rotation="10" y="0"/>
 	<e:Label id="lab_max" text="高牌" x="14" y="94" anchorOffsetX="0" width="80" textAlign="center" size="24"/>
 </e:Skin>

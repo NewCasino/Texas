@@ -42,8 +42,8 @@ class LocalServer extends egret.HashObject{
 				return;
 			}
 			
-			this.tables[id].players.push(1);
 			this.getPos(this.tables[id], this.players[1]);
+			this.tables[id].players.push(1);
 			this.players[1].table = id;
 			let players = [];
 			len = this.tables[id].players.length;
@@ -126,7 +126,7 @@ class LocalServer extends egret.HashObject{
 	}
 
 	private getPos(table,player){
-		for(let i = 0; i < 6; i++){
+		for(let i = 0; i <= 6; i++){
 			if(!( table.pos & (1 << i))){
 				player.pos = i;
 				table.pos = table.pos | (1 << i);
